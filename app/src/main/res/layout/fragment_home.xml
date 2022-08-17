@@ -500,10 +500,8 @@
                     app:layout_constraintStart_toEndOf="@+id/textView11"
                     app:layout_constraintTop_toTopOf="@+id/textView11"
                     app:rcAnimationEnable="true"
-                    app:rcBackgroundColor="@color/red"
-                    app:rcMax="100"
-                    app:rcProgress="60"
-                    app:rcProgressColor="@color/green">
+                    app:rcBackgroundColor="#f5f5f5"
+                    app:rcMax="100">
 
                 </com.akexorcist.roundcornerprogressbar.RoundCornerProgressBar>
 
@@ -513,7 +511,7 @@
                     android:layout_height="wrap_content"
                     android:text="@string/_100"
                     android:textAlignment="center"
-                    android:textColor="@color/white"
+                    android:textColor="#FFD600"
                     android:textSize="18sp"
                     android:textStyle="bold"
                     app:layout_constraintBottom_toBottomOf="@+id/progress_fasa_RST"

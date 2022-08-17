@@ -4,7 +4,9 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
+import com.example.monitoringlistrik3phase.R
 import com.example.monitoringlistrik3phase.databinding.FragmentHomeBinding
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
@@ -12,7 +14,6 @@ import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.ValueEventListener
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
-import java.text.DecimalFormat
 
 class HomeFragment : Fragment() {
 
@@ -50,7 +51,8 @@ class HomeFragment : Fragment() {
                     override fun onDataChange(snapshot: DataSnapshot) {
                         binding?.apply {
                             snapshot.apply {
-                                val decimalFormat = "%.2f".format(snapshot.value.toString().toDouble())
+                                val decimalFormat =
+                                    "%.2f".format(snapshot.value.toString().toDouble())
                                 tvAmpere1.text = decimalFormat
                             }
                         }
@@ -67,7 +69,8 @@ class HomeFragment : Fragment() {
                     override fun onDataChange(snapshot: DataSnapshot) {
                         binding?.apply {
                             snapshot.apply {
-                                val decimalFormat = "%.2f".format(snapshot.value.toString().toDouble())
+                                val decimalFormat =
+                                    "%.2f".format(snapshot.value.toString().toDouble())
                                 tvAmpere2.text = decimalFormat
                             }
                         }
@@ -84,7 +87,8 @@ class HomeFragment : Fragment() {
                     override fun onDataChange(snapshot: DataSnapshot) {
                         binding?.apply {
                             snapshot.apply {
-                                val decimalFormat = "%.2f".format(snapshot.value.toString().toDouble())
+                                val decimalFormat =
+                                    "%.2f".format(snapshot.value.toString().toDouble())
                                 tvAmpere3.text = decimalFormat
                             }
                         }
@@ -104,7 +108,8 @@ class HomeFragment : Fragment() {
                     override fun onDataChange(snapshot: DataSnapshot) {
                         binding?.apply {
                             snapshot.apply {
-                                val decimalFormat = "%.2f".format(snapshot.value.toString().toDouble())
+                                val decimalFormat =
+                                    "%.2f".format(snapshot.value.toString().toDouble())
                                 tvDaya1.text = decimalFormat
                             }
                         }
@@ -121,7 +126,8 @@ class HomeFragment : Fragment() {
                     override fun onDataChange(snapshot: DataSnapshot) {
                         binding?.apply {
                             snapshot.apply {
-                                val decimalFormat = "%.2f".format(snapshot.value.toString().toDouble())
+                                val decimalFormat =
+                                    "%.2f".format(snapshot.value.toString().toDouble())
                                 tvDaya2.text = decimalFormat
                             }
                         }
@@ -138,7 +144,8 @@ class HomeFragment : Fragment() {
                     override fun onDataChange(snapshot: DataSnapshot) {
                         binding?.apply {
                             snapshot.apply {
-                                val decimalFormat = "%.2f".format(snapshot.value.toString().toDouble())
+                                val decimalFormat =
+                                    "%.2f".format(snapshot.value.toString().toDouble())
                                 tvDaya3.text = decimalFormat
                             }
                         }
@@ -158,7 +165,8 @@ class HomeFragment : Fragment() {
                     override fun onDataChange(snapshot: DataSnapshot) {
                         binding?.apply {
                             snapshot.apply {
-                                val decimalFormat = "%.2f".format(snapshot.value.toString().toDouble())
+                                val decimalFormat =
+                                    "%.2f".format(snapshot.value.toString().toDouble())
                                 tvTegangan1.text = decimalFormat
                             }
                         }
@@ -175,7 +183,8 @@ class HomeFragment : Fragment() {
                     override fun onDataChange(snapshot: DataSnapshot) {
                         binding?.apply {
                             snapshot.apply {
-                                val decimalFormat = "%.2f".format(snapshot.value.toString().toDouble())
+                                val decimalFormat =
+                                    "%.2f".format(snapshot.value.toString().toDouble())
                                 tvTegangan2.text = decimalFormat
                             }
                         }
@@ -192,7 +201,8 @@ class HomeFragment : Fragment() {
                     override fun onDataChange(snapshot: DataSnapshot) {
                         binding?.apply {
                             snapshot.apply {
-                                val decimalFormat = "%.2f".format(snapshot.value.toString().toDouble())
+                                val decimalFormat =
+                                    "%.2f".format(snapshot.value.toString().toDouble())
                                 tvTegangan3.text = decimalFormat
                             }
                         }
@@ -220,6 +230,16 @@ class HomeFragment : Fragment() {
                     override fun onDataChange(snapshot: DataSnapshot) {
                         binding?.apply {
                             snapshot.apply {
+                                when {
+                                    snapshot.value.toString().toInt() <= 15 -> {
+                                        progressFasaRST.progressColor =
+                                            ContextCompat.getColor(requireActivity(), R.color.green)
+                                    }
+                                    else -> {
+                                        progressFasaRST.progressColor =
+                                            ContextCompat.getColor(requireActivity(), R.color.red)
+                                    }
+                                }
                                 binding?.progressFasaRST?.setProgress(value.toString().toInt())
                                 binding?.numberPersentase?.text = value.toString().plus(" %")
                             }
